@@ -572,7 +572,7 @@ class Registration(object):
             self._c_object, undistorted._c_object,
             ffi.cast('int32_t*', rows.ctypes.data),
             ffi.cast('int32_t*', cols.ctypes.data),
-            int(np.product(rows.shape)),
+            int(np.prod(rows.shape)),
             ffi.cast('float*', xs.ctypes.data),
             ffi.cast('float*', ys.ctypes.data),
             ffi.cast('float*', zs.ctypes.data)
@@ -676,7 +676,7 @@ def write_pcd(file_object, points, rgb=None):
     """
     assert len(points.shape) == 3
     xs, ys, zs = points[..., 0], points[..., 1], points[..., 2]
-    n_points = int(np.product(points.shape[:-1]))
+    n_points = int(np.prod(points.shape[:-1]))
 
     file_object.write(b'VERSION .7\n')
 
